@@ -24,18 +24,29 @@ public class LifeTotalScript : MonoBehaviour
             {
                 scoreScript.AddScore();
                 monsterSpwanerScript.MonsterCounterReduce();
+                Destroy(gameObject);
             }
             if(tag == "player")
             {
                 highScoreScript.SaveHighScore();
                 highScoreScript.GameEndMassage(0);
+                foreach (Transform child in transform)
+                {
+                    if (!child.tag.Equals("MainCamera"))
+                    {
+                        Destroy(child.gameObject);
+                    }else
+                    {
+                        child.GetComponent<ShootyGunScript>().enabled = false;
+                    }
+                }
+
             }
             else if(monsterSpwanerScript.counter == 0)
             {
                 highScoreScript.SaveHighScore();
                 highScoreScript.GameEndMassage(1);
             }
-            Destroy(gameObject);
         }
     }
 }

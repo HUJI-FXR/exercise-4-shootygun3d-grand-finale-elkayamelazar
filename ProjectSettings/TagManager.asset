@@ -9,6 +9,7 @@ TagManager:
   - monster
   - monsterBody
   - bullet
+  - player_body
   layers:
   - Default
   - TransparentFX
